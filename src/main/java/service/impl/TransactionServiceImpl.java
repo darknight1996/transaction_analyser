@@ -17,7 +17,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public List<Transaction> getTransactionsForReport(Date dateFrom, Date dateTo, String merchant) {
 
-        List<Transaction> transactions = transactionRepository.getAllInDateIntervalByMerchant(dateFrom, dateTo, merchant);
+        List<Transaction> transactions = transactionRepository.getAllPaymentsInDateIntervalByMerchant(dateFrom, dateTo, merchant);
         List<Transaction> reversals = transactionRepository.getAllByType(TransactionType.REVERSAL);
 
         // remove transactions that marked as reversal

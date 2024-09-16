@@ -32,11 +32,12 @@ public class TransactionRepositoryCSV implements TransactionRepository {
     }
 
     @Override
-    public List<Transaction> getAllInDateIntervalByMerchant(Date fromDate, Date toDate, String merchant) {
+    public List<Transaction> getAllPaymentsInDateIntervalByMerchant(Date fromDate, Date toDate, String merchant) {
         return transactions.stream().
                 filter(transaction -> transaction.getMerchant().equals(merchant)).
                 filter(transaction -> transaction.getDate().getTime() >= fromDate.getTime() &&
                         transaction.getDate().getTime() <= toDate.getTime()).
+                filter(transaction -> transaction.getType() == TransactionType.PAYMENT).
                 collect(Collectors.toList());
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TransactionRepository {
 
-    List<Transaction> getAllInDateIntervalByMerchant(Date fromDate, Date toDate, String merchant);
+    List<Transaction> getAllPaymentsInDateIntervalByMerchant(Date fromDate, Date toDate, String merchant);
 
     List<Transaction> getAllByType(TransactionType type);
 
